@@ -33,37 +33,46 @@ this.getAllPixels = target => {
 this.getPixelData = pixels => {
     console.log(`Scanning colors...`);
     var start = Date.now();
-    var colors = [];
+    var colors = new Array();
 
     // Iterate
     for (var i = 0; i < pixels.length; i++) {
-        var color = `${ pixels[i].r }, ${ pixels[i].g }, ${ pixels[i].b }`;
 
-        if (!_.find(colors, { color : color })) {
-            // If the value doesn't exist in the colors array, add it with a count property
-            colors.push({ color : color, count : 0 });
-        } else {
-            // If it does exist, add to the count
-            _.find(colors, { color : color }).count++;
+        var p = pixels[i];
+
+        if ( ! colors[p.r])
+            colors[p.r] = new Array();
+
+        if ( ! colors[p.r][p.g])
+            colors[p.r][p.g] = new Array();
+
+        if ( ! colors[p.r][p.g][p.b]) {
+            var color = `${ p.r }, ${ p.g }, ${ p.b }`;
+            colors[p.r][p.g][p.b] = {color: color, count: 0};
         }
+
+        colors[p.r][p.g][p.b].count++;
+
     };
 
-    var primaryColor = '';
-    var counter = 0;
     console.log(`Finding most used color...`);
-    for (var i = 0; i < colors.length; i++) {
-       /**
-        *  If the count value of the current color object is
-        *  greater than the counter variable, make that count the
-        *  new counter value and reassign correlating color property to
-        *  the primaryColor variable.
-        */
-        if (colors[i].count > counter) {
-            counter = colors[i].count;
-            primaryColor = colors[i].color;
+    var max;
+    var maxVal = 0;
+    for (var r in colors) {
+        for (var g in colors[r]) {
+            for (var b in colors[r][g]) {
+                if (maxVal < colors[r][g][b].count) {
+                    maxVal = colors[r][g][b].count;
+                    max = colors[r][g][b];
+                }
+            }
         }
     }
 
+
+
+    var primaryColor = max.color;
+    var counter = maxVal;
     // Done
     return new Promise((resolve, reject) => {
         var end = Date.now();
