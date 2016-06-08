@@ -1,7 +1,7 @@
 var fs     = require('fs');
 var tidy   = require('htmltidy').tidy;
 var insert = require('./template.js').insert;
-var parser  = require('./parser.js');
+var parser = require('./parser.js');
 
 var stream = fs.createWriteStream(`index.html`);
 
