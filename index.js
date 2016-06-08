@@ -9,8 +9,20 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
  * Gets data and instantiates run().
  * @param {string} target - User inputted file name.
  */
-rl.question('Name of your file? ', target => {
-    getPixelData(target).then(pixelData => {
-        getData(pixelData);
+
+ function processEmail(target) {
+     getPixelData(target).then(pixelData => {
+         getData(pixelData);
+     });
+ }
+
+
+var fileName = '';
+if (process.argv.length == 3) {
+    fileName = process.argv[2];
+    processEmail(fileName);
+} else {
+    rl.question('Name of your file? ', target => {
+        processEmail(target);
     });
-});
+}
