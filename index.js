@@ -10,7 +10,7 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
  * @param {string} target - User inputted file name.
  */
 
- function processEmail(target) {
+ this.processEmail = target => {
      getPixelData(target).then(pixelData => {
          getData(pixelData);
      });
@@ -20,9 +20,9 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
 var fileName = '';
 if (process.argv.length == 3) {
     fileName = process.argv[2];
-    processEmail(fileName);
+    this.processEmail(fileName);
 } else {
     rl.question('Name of your file? ', target => {
-        processEmail(target);
+        this.processEmail(target);
     });
 }
