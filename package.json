@@ -1,8 +1,8 @@
 {
   "name": "pixels-to-email",
   "version": "1.0.0",
-  "description": "Turn your images into table based emails!",
-  "main": "pixels.js",
+  "description": "Turn your images into table based emails :D",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
