@@ -1,6 +1,6 @@
 var readline     = require('readline');
-var getPixelData = require('./pixels.js');
-var getData      = require('./data.js');
+var getPixelData = require('./modules/pixels.js');
+var getData      = require('./modules/data.js');
 
 // Terminal Env
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
