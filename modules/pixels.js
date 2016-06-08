@@ -67,7 +67,7 @@ this.getPixelData = pixels => {
     // Done
     return new Promise((resolve, reject) => {
         var end = Date.now();
-        console.log(`Finished (${ end - start }).`);
+        console.log(`Finished in ${ end - start }ms.`);
         console.log(`Primary color set to ${ primaryColor } (${ counter } occurences).`);
         resolve({ primaryColor: primaryColor, pixels: pixels });
     });
