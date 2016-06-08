@@ -69,8 +69,6 @@ this.getPixelData = pixels => {
         }
     }
 
-
-
     var primaryColor = max.color;
     var counter = maxVal;
     // Done
