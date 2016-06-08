@@ -7,6 +7,7 @@ var primaryColor = [];
 var otherColors  = [];
 var imageWidth   = '';
 var imageHeight  = '';
+var dimensions   = {};
 
 /**
  * Returns a promise with array of all pixels from given image.
@@ -14,7 +15,7 @@ var imageHeight  = '';
  */
 this.getAllPixels = target => {
     // TODO: Do something with dimensions?
-    // var dimensions = sizeOf(`./${target}`);
+    dimensions = sizeOf(`./${target}`);
 
     return new Promise((resolve, reject) => {
         getter.get(`${ target }`, (err, pixels) => {
@@ -28,7 +29,7 @@ this.getAllPixels = target => {
             resolve(pixels[0]);
         });
     });
-};
+}
 
 this.getPixelData = pixels => {
     console.log(`Scanning colors...`);
@@ -48,7 +49,7 @@ this.getPixelData = pixels => {
 
         if ( ! colors[p.r][p.g][p.b]) {
             var color = `${ p.r }, ${ p.g }, ${ p.b }`;
-            colors[p.r][p.g][p.b] = {color: color, count: 0};
+            colors[p.r][p.g][p.b] = { color: color, count: 0 };
         }
 
         colors[p.r][p.g][p.b].count++;
@@ -71,14 +72,15 @@ this.getPixelData = pixels => {
 
     var primaryColor = max.color;
     var counter = maxVal;
+
     // Done
     return new Promise((resolve, reject) => {
         var end = Date.now();
         console.log(`Finished in ${ end - start }ms.`);
         console.log(`Primary color set to ${ primaryColor } (${ counter } occurences).`);
-        resolve({ primaryColor: primaryColor, pixels: pixels });
+        resolve({ primaryColor: primaryColor, pixels: pixels, dimensions: dimensions });
     });
-};
+}
 
 // TODO: Check for avg pixel color then change 255 values to match (or track all color changes?)
 // TODO: Check img dimensions for grid and determine how many pixels per line
