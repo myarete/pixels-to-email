@@ -1,5 +1,3 @@
-
-
 this.run = pixelData => {
     console.log(`ze data ${pixelData}`);
 }

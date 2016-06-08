@@ -1,7 +1,3 @@
-
-
-
-
 module.exports = (function(htmlToParse) {
 
     // /<table>(.*?)<\/table>/g

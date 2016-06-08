@@ -1,6 +1,6 @@
-var getter   = require('pixel-getter');
-var sizeOf   = require('image-size');
-var _        = require('lodash');
+var getter = require('pixel-getter');
+var sizeOf = require('image-size');
+var _      = require('lodash');
 // TODO: Include all assets in folder and check for sizes for placement.
 
 var primaryColor = [];
