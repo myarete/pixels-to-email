@@ -3,11 +3,11 @@ var sizeOf = require('image-size');
 var _      = require('lodash');
 // TODO: Include all assets in folder and check for sizes for placement.
 
-var primaryColor = [];
-var otherColors  = [];
+var primaryColor = new Array();
+var otherColors  = new Array();
 var imageWidth   = '';
 var imageHeight  = '';
-var dimensions   = {};
+var dimensions   = new Object();
 
 /**
  * Returns a promise with array of all pixels from given image.
@@ -21,7 +21,7 @@ this.getAllPixels = target => {
         getter.get(`${ target }`, (err, pixels) => {
             if (err) {
                 // TODO: Make user not have to exit program to re-enter
-                console.log('File not found. Be sure the extension is included.');
+                // console.log('File not found. Be sure the extension is included.');
                 reject(err);
                 process.exit();
             }
@@ -32,7 +32,7 @@ this.getAllPixels = target => {
 }
 
 this.getPixelData = pixels => {
-    console.log(`Scanning colors...`);
+    // console.log(`Scanning colors...`);
     var start = Date.now();
     var colors = new Array();
 
@@ -56,7 +56,7 @@ this.getPixelData = pixels => {
 
     };
 
-    console.log(`Finding most used color...`);
+    // console.log(`Finding most used color...`);
     var max;
     var maxVal = 0;
     for (var r in colors) {
@@ -76,13 +76,12 @@ this.getPixelData = pixels => {
     // Done
     return new Promise((resolve, reject) => {
         var end = Date.now();
-        console.log(`Finished in ${ end - start }ms.`);
-        console.log(`Primary color set to ${ primaryColor } (${ counter } occurences).`);
+        // console.log(`Finished in ${ end - start }ms.`);
+        // console.log(`Primary color set to ${ primaryColor } (${ counter } occurences).`);
         resolve({ primaryColor: primaryColor, pixels: pixels, dimensions: dimensions });
     });
 }
 
-// TODO: Check for avg pixel color then change 255 values to match (or track all color changes?)
 // TODO: Check img dimensions for grid and determine how many pixels per line
 
 /**

@@ -9,13 +9,11 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
  * Gets data and instantiates run().
  * @param {string} target - User inputted file name.
  */
-
  this.processEmail = target => {
      getPixelData(target).then(pixelData => {
          getData(pixelData);
      });
  }
-
 
 var fileName = '';
 if (process.argv.length == 3) {
