@@ -5,8 +5,8 @@ var _      = require('lodash');
 
 var primaryColor = new Array();
 var otherColors  = new Array();
-var imageWidth   = '';
-var imageHeight  = '';
+var imageWidth   = new String();
+var imageHeight  = new String();
 var dimensions   = new Object();
 
 /**

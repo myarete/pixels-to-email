@@ -1,6 +1,6 @@
 var readline     = require('readline');
-var getPixelData = require('./modules/pixels.js');
 var getData      = require('./modules/data.js');
+var getPixelData = require('./modules/pixels.js');
 
 // Terminal Env
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
@@ -15,12 +15,12 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
      });
  }
 
-var fileName = '';
+var fileName = new String();
 if (process.argv.length == 3) {
     fileName = process.argv[2];
     this.processEmail(fileName);
 } else {
-    rl.question('Name of your file? ', target => {
+    rl.question(`Name of your file? `, target => {
         this.processEmail(target);
     });
 }
